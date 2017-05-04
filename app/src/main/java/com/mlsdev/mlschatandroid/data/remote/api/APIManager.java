@@ -4,6 +4,7 @@ import com.mlsdev.mlschatandroid.BuildConfig;
 import com.mlsdev.mlschatandroid.data.remote.api.contract.ChatsApiContract;
 import com.mlsdev.mlschatandroid.data.remote.api.contract.ProfileAPIContract;
 import com.mlsdev.mlschatandroid.data.remote.api.contract.UsersAPIContract;
+import com.mlsdev.mlschatandroid.data.remote.api.handler.RxErrorHandlingCallAdapterFactory;
 
 import java.io.IOException;
 
@@ -13,7 +14,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -49,7 +49,7 @@ public class APIManager {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(RxErrorHandlingCallAdapterFactory.create())
                 .client(client)
                 .build();
 
