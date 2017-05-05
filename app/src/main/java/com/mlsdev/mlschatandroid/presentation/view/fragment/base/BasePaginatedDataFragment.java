@@ -1,13 +1,14 @@
-package com.mlsdev.mlschatandroid.presentation.view.fragment;
+package com.mlsdev.mlschatandroid.presentation.view.fragment.base;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.mlsdev.mlschatandroid.R;
 import com.mlsdev.mlschatandroid.presentation.presenter.base.BasePaginatedPresenter;
-import com.mlsdev.mlschatandroid.presentation.presenter.view.PaginatedDataView;
+import com.mlsdev.mlschatandroid.presentation.presenter.view.PaginatedDataPView;
 import com.mlsdev.mlschatandroid.presentation.view.listener.SimplePaginateListener;
 
 import butterknife.BindView;
@@ -16,18 +17,19 @@ import butterknife.BindView;
  * Created by oleksandr on 03.05.17.
  */
 
-public abstract class BasePaginatedDataFragment<P extends BasePaginatedPresenter<V, T>, V extends PaginatedDataView<T>, T> extends BaseRefreshDataFragment<P, V> {
+public abstract class BasePaginatedDataFragment<P extends BasePaginatedPresenter<V, T>, V extends PaginatedDataPView<T>, T> extends BaseRefreshDataFragment<P, V> {
 
     @BindView(R.id.recycler_view)
     RecyclerView rvData;
 
-    SimplePaginateListener pageListener;
+    private SimplePaginateListener pageListener;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rvData.setLayoutManager(provideLayoutManager());
-        rvData.setAdapter(provideAdapter());
+        if (rvData.getAdapter() == null)
+            rvData.setAdapter(provideAdapter());
     }
 
     @Override
@@ -57,8 +59,10 @@ public abstract class BasePaginatedDataFragment<P extends BasePaginatedPresenter
         return R.layout.layout_recyclerview;
     }
 
+    @NonNull
     protected abstract RecyclerView.Adapter provideAdapter();
 
+    @NonNull
     protected abstract RecyclerView.LayoutManager provideLayoutManager();
 
 }

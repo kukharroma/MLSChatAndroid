@@ -1,4 +1,4 @@
-package com.mlsdev.mlschatandroid.presentation.view.fragment;
+package com.mlsdev.mlschatandroid.presentation.view.fragment.base;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.mlsdev.mlschatandroid.MLSChatApplication;
 import com.mlsdev.mlschatandroid.R;
 import com.mlsdev.mlschatandroid.presentation.presenter.base.BasePresenter;
 import com.mlsdev.mlschatandroid.presentation.presenter.view.PView;
+import com.mlsdev.mlschatandroid.presentation.view.navigation.BackButtonListener;
 
 import net.grandcentrix.thirtyinch.TiFragment;
 
@@ -22,8 +24,8 @@ import butterknife.Unbinder;
  * Created by oleksandr on 03.05.17.
  */
 
-public abstract class BaseFragment<P extends BasePresenter<V>, V extends PView> extends TiFragment<P, V> implements PView {
-
+public abstract class BaseFragment<P extends BasePresenter<V>, V extends PView> extends TiFragment<P, V> implements PView{
+    private static final String EXTRA_NAME = "tcf_extra_name";
     private Unbinder unbinder;
 
     ProgressDialog progressDialog;
@@ -61,6 +63,7 @@ public abstract class BaseFragment<P extends BasePresenter<V>, V extends PView> 
     public void showErrorMessage(String errorMessage) {
         Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
     }
+
 
     @LayoutRes
     protected abstract int provideFragmentLayoutRes();

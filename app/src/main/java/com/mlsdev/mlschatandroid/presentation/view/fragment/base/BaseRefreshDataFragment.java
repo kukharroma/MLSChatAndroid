@@ -1,4 +1,4 @@
-package com.mlsdev.mlschatandroid.presentation.view.fragment;
+package com.mlsdev.mlschatandroid.presentation.view.fragment.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

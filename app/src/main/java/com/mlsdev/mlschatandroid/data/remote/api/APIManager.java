@@ -64,15 +64,15 @@ public class APIManager {
         return instance;
     }
 
-    public ChatsApiContract getChatsApi() {
+    public ChatsApiContract getChatsAPIManager() {
         return chatsApi;
     }
 
-    public ProfileAPIContract getProfileAPIContract() {
+    public ProfileAPIContract getProfileAPIManager() {
         return profileAPIContract;
     }
 
-    public UsersAPIContract getUsersAPIContract() {
+    public UsersAPIContract getUsersAPIManager() {
         return usersAPIContract;
     }
 }

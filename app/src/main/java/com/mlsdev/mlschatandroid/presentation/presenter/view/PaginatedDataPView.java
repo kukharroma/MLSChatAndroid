@@ -6,6 +6,6 @@ import java.util.List;
  * Created by oleksandr on 03.05.17.
  */
 
-public interface PaginatedDataView<T> extends PView {
+public interface PaginatedDataPView<T> extends PView {
     void showData(List<T> data);
 }

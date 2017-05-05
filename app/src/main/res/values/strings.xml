@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MLSChatAndroid</string>
     <string name="wait">Wait</string>
+    <string name="chats">Chats</string>
+    <string name="profile">Profile</string>
+    <string name="contacts">Contacts</string>
 </resources>
